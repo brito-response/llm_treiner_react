@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    working_dir: /app
+    volumes:
+      - ./src:/app/src              # só monta a pasta de código
+      - /app/node_modules           # volume anônimo para node_modules
+    ports:
+      - "5173:5173"
+    command: sh -c "npm install && npm run test && npm run dev"
